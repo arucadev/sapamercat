@@ -56,7 +56,7 @@ public abstract class Producte implements Comparable<Producte> {
         this.codi = codi;
     }
 
-    // Metode abstracte per calcular preu final
+    // Mètode abstracte per calcular preu final
     public abstract double calcularPreuFinal();
 
     @Override

@@ -1,5 +1,8 @@
 package entities;
 
+import exceptions.LimitCaracteresException;
+import exceptions.NegatiuException;
+
 public class Textil extends Producte {
     /* Tèxtil: composició tèxtil (text) */
 
@@ -7,7 +10,7 @@ public class Textil extends Producte {
     private String composicio;
 
     // Constructor
-    public Textil(int preu, String nom, String codi, String composicio) {
+    public Textil(int preu, String nom, String codi, String composicio) throws NegatiuException, LimitCaracteresException {
         super(preu, nom, codi);
         this.composicio = composicio;
     }
