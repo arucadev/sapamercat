@@ -1,6 +1,6 @@
 package entities;
 
-public class Textil extends Productes {
+public class Textil extends Producte {
     /* Tèxtil: composició tèxtil (text) */
 
     // Atributs específics
@@ -19,5 +19,10 @@ public class Textil extends Productes {
 
     public void setComposicio(String composicio) {
         this.composicio = composicio;
+    }
+
+    @Override
+    public double calcularPreuFinal() {
+        return getPreu();
     }
 }

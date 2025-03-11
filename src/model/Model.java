@@ -38,4 +38,41 @@ public class Model {
         4. Mostrar carro de la compra En escollir aquesta opció es mostra un llistat amb la descripció i quantitat de cada producte (sense preu) que hi ha dins el carro del a compra. En aquest cas, si hi ha productes repetits ho seran si tenen el mateix codi de barres (no cal mirar el preu unitari).
 
         0. Sortir En escollir aquesta opció es tanca l'aplicació. */
+
+    // Gestió Magatzem I Compres
+    public static void caducitat() {
+        // Llistar Aliments en funció de dataCaducitat
+    }
+
+    public static void tiquetsDeCompra() {
+        // Guardar tiquet de compra a arxiu de text
+    }
+
+    public static void composicioTextil() {
+        // Ordenar Textils per la seva composició.
+        //  No podrem tenir dos productes amb el mateix codi de barres. Aquesta ordenació la farem servir també pels tèxtils del carret de la compra.
+    }
+
+    // Introduir Producte
+    public static void introduirAlimentacio() {
+        // Introduir Aliment
+    }
+
+    public static void introduirTextil() {
+        // Introduir Textil
+    }
+
+    public static void introduirElectronica() {
+        // Introduir Electronica
+    }
+
+    public static void passarPerCaixa() {
+        // Es mostra ticket. Ha de contenir data i nom de supermercat. Es mostra: nom producte, unitats introduides al carro, preu unitari i preu total, calcular suma total a pagar.
+        // Si s'han introduït dos productes iguals (tenen el mateix codi de barres i el mateix preu unitari) només es mostrarà una vegada, amb la quantitat total d'aquell producte, és a dir, les unitats.
+        // Aquesta opció també implica buidar el carro de la compra.
+    }
+
+    public static void mostrarCarroDeLaCompra() {
+        // Llistar productes carro de la compra
+    }
 }

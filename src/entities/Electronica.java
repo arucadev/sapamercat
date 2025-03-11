@@ -1,6 +1,6 @@
 package entities;
 
-public class Electronica extends Productes {
+public class Electronica extends Producte {
             /* Electrònica: dies de garantia (numèric)
             El preu d'aquest tipus de producte varia en funció dels dies que té de garantia segons la fórmula:
             preu + preu*(diesGarantia/365)*0.1 */
@@ -21,5 +21,10 @@ public class Electronica extends Productes {
 
     public void setDiesGarantia(int diesGarantia) {
         this.diesGarantia = diesGarantia;
+    }
+
+    // Metode per calcular preu segons els dies de garantia
+    public double calcularPreuFinal() {
+        return getPreu() + getPreu() * (diesGarantia / 365.0) * 0.1;
     }
 }
