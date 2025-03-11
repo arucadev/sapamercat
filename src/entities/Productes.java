@@ -14,7 +14,7 @@ public abstract class Productes {
         this.codi = codi;
     }
 
-    // Getters and Setters
+    // Getters & Setters
     public int getPreu() {
         return preu;
     }
