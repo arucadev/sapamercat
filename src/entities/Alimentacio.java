@@ -1,10 +1,12 @@
 package entities;
 
+import exceptions.DataCaducitatException;
+import exceptions.LimitCaractersException;
+import exceptions.NegatiuException;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
-import java.util.Date;
 
 public class Alimentacio extends Producte {
 
@@ -16,8 +18,11 @@ public class Alimentacio extends Producte {
     private Temporal dataCaducitat;
 
     // Constructor
-    public Alimentacio(int preu, String nom, String codi, Temporal dataCaducitat) {
+    public Alimentacio(int preu, String nom, String codi, Temporal dataCaducitat) throws NegatiuException, LimitCaractersException, DataCaducitatException {
         super(preu, nom, codi);
+        if (dataCaducitat == null) {
+            throw new DataCaducitatException("La data de caducitat no pot ser null"); // DataCaducitatException o NullPointerException?
+        }
         this.dataCaducitat = dataCaducitat;
     }
 
@@ -32,17 +37,27 @@ public class Alimentacio extends Producte {
 
     //Calcular preu final segons dies restants per caducitat
     @Override
-    public double calcularPreuFinal() {
+    public double calcularPreuFinal() throws DataCaducitatException {
         // Obtenir data actual i calcular dies restants per caducitat
         LocalDate dataActual = LocalDate.now();
         long diesFinsCaducitat = ChronoUnit.DAYS.between(dataActual, dataCaducitat);
 
-        // Retorna preu normal si el producte ja està caducat
+        // Excepció si el producte ja està caducat
+        if (diesFinsCaducitat < 0) {
+            throw new DataCaducitatException("El producte ja està caducat");
+        }
+
+        /*  Retorna preu normal si el producte ja està caducat
         if (diesFinsCaducitat < 0) {
             return getPreu();
-        }
+        } */
 
         // Aplica formula: preu - preu*(1/(dataCaducitat-dataActual+1)) + (preu * 0.1)
         return getPreu() - getPreu() * (1.0 / (diesFinsCaducitat + 1)) + (getPreu() * 0.1);
+    }
+
+    @Override
+    public int compareTo(Producte o) {
+        return 0;
     }
 }

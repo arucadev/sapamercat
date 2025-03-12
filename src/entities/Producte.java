@@ -1,9 +1,8 @@
 package entities;
 
-import exceptions.LimitCaracteresException;
+import exceptions.DataCaducitatException;
+import exceptions.LimitCaractersException;
 import exceptions.NegatiuException;
-
-import java.util.Comparator;
 
 public abstract class Producte implements Comparable<Producte> {
 
@@ -13,12 +12,12 @@ public abstract class Producte implements Comparable<Producte> {
     private String codi;
 
     // Constructor
-    public Producte(int preu, String nom, String codi) throws NegatiuException, LimitCaracteresException {
+    public Producte(int preu, String nom, String codi) throws NegatiuException, LimitCaractersException {
         if (preu < 0) {
             throw new NegatiuException("El preu no pot ser negatiu");
         }
         if (nom.length() > 50) { // Límit de 50 caràcters
-            throw new LimitCaracteresException("El nom no pot superar els 50 caràcters");
+            throw new LimitCaractersException("El nom no pot superar els 50 caràcters");
         }
         this.preu = preu;
         this.nom = nom;
@@ -41,9 +40,9 @@ public abstract class Producte implements Comparable<Producte> {
         return nom;
     }
 
-    public void setNom(String nom) throws LimitCaracteresException {
+    public void setNom(String nom) throws LimitCaractersException {
         if (nom.length() > 50) {
-            throw new LimitCaracteresException("El nom no pot superar els 50 caràcters");
+            throw new LimitCaractersException("El nom no pot superar els 50 caràcters");
         }
         this.nom = nom;
     }
@@ -57,7 +56,7 @@ public abstract class Producte implements Comparable<Producte> {
     }
 
     // Mètode abstracte per calcular preu final
-    public abstract double calcularPreuFinal();
+    public abstract double calcularPreuFinal() throws DataCaducitatException;
 
     @Override
     public boolean equals(Object obj) {
