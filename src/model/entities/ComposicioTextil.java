@@ -6,5 +6,4 @@ public enum ComposicioTextil {
     VISCOSA,
     LLANA,
     SEDA,
-    Z;
 }

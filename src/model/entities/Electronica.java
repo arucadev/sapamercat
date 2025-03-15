@@ -3,7 +3,11 @@ package model.entities;
 import model.exceptions.LimitCaractersException;
 import model.exceptions.NegatiuException;
 
-public class Electronica extends Producte {
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+
+public class Electronica extends Producte implements Comparable<Producte> {
             /* Electrònica: dies de garantia (numèric)
             El preu d'aquest tipus de producte varia en funció dels dies que té de garantia segons la fórmula:
             preu + preu*(diesGarantia/365)*0.1 */
@@ -34,11 +38,18 @@ public class Electronica extends Producte {
 
     // Metode per calcular preu segons els dies de garantia
     public double calcularPreuFinal() {
-        return getPreu() + getPreu() * (diesGarantia / 365.0) * 0.1;
+        double preuFinal = getPreu() + getPreu() * (diesGarantia / 365.0) * 0.1;
+        return Math.round(preuFinal * 100.0) / 100.0;
+    }
+
+    @Override
+    protected LocalDate getDataCaducitat() {
+        // Retornem una data llunyana per donar prioritat als aliments
+        return LocalDate.ofEpochDay(9999-12-31);
     }
 
     @Override
     public int compareTo(Producte o) {
-        return 0;
+        return this.getNom().compareTo(o.getNom());
     }
 }

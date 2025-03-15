@@ -4,7 +4,11 @@ import model.exceptions.DataCaducitatException;
 import model.exceptions.LimitCaractersException;
 import model.exceptions.NegatiuException;
 
-public abstract class Producte implements Comparable<Producte> {
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+
+public abstract class Producte {
 
     // Atributs
     private double preu;
@@ -26,7 +30,7 @@ public abstract class Producte implements Comparable<Producte> {
 
     // Getters & Setters
     public double getPreu() {
-        return preu;
+        return Math.round(preu * 100.0) / 100.0;
     }
 
     public void setPreu(double preu) throws NegatiuException {
@@ -73,4 +77,6 @@ public abstract class Producte implements Comparable<Producte> {
         // Utilitzem el codi de barres per calcular el hashcode
         return codi.hashCode();
     }
+
+    protected abstract LocalDate getDataCaducitat();
 }

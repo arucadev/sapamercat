@@ -4,21 +4,21 @@ import model.exceptions.DataCaducitatException;
 import model.exceptions.LimitCaractersException;
 import model.exceptions.NegatiuException;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 
-public class Alimentacio extends Producte {
+public class Alimentacio extends Producte implements Comparable<Producte> {
 
     /* Alimentació: data de caducitat.
             El preu d'aquest tipus de producte varia en funció dels dies que falten per caducar, segons la fórmula:
              preu - preu*(1/(dataCaducitat-dataActual+1)) + (preu * 0.1) */
 
     // Atributs específics
-    private Temporal dataCaducitat;
+    private LocalDate dataCaducitat;
 
     // Constructor
-    public Alimentacio(double preu, String nom, String codi, Temporal dataCaducitat) throws NegatiuException, LimitCaractersException, DataCaducitatException {
+    public Alimentacio(double preu, String nom, String codi, LocalDate dataCaducitat) throws NegatiuException, LimitCaractersException, DataCaducitatException {
         super(preu, nom, codi);
         if (dataCaducitat == null) {
             throw new DataCaducitatException("La data de caducitat no pot ser null"); // DataCaducitatException o NullPointerException?
@@ -27,11 +27,11 @@ public class Alimentacio extends Producte {
     }
 
     // Getters & Setters
-    public Temporal getDataCaducitat() {
+    public LocalDate getDataCaducitat() {
         return dataCaducitat;
     }
 
-    public void setDataCaducitat(Temporal dataCaducitat) {
+    public void setDataCaducitat(LocalDate dataCaducitat) {
         this.dataCaducitat = dataCaducitat;
     }
 
@@ -53,11 +53,27 @@ public class Alimentacio extends Producte {
         } */
 
         // Aplica formula: preu - preu*(1/(dataCaducitat-dataActual+1)) + (preu * 0.1)
-        return getPreu() - getPreu() * (1.0 / (diesFinsCaducitat + 1)) + (getPreu() * 0.1);
+        double preuFinal = getPreu() - getPreu() * (1.0 / (diesFinsCaducitat + 1)) + (getPreu() * 0.1);
+        return Math.round(preuFinal * 100.0) / 100.0;
     }
 
+    /**
+     * Compara dos productes per data de caducitat.
+     * Els productes s'ordenen per data de més propera a més llunyana.
+     * @param o other Producte
+     * @return int
+     */
     @Override
     public int compareTo(Producte o) {
-        return 0;
+        return this.dataCaducitat.compareTo(o.getDataCaducitat());
+        /*
+    this, other = Cronologicament més proper a més llunyà
+    other, this = Cronologicament més llunyà a més proper
+     */
+
+    /* Equivalència amb Comparator
+    t1 = this
+    t2 = other
+     */
     }
 }
