@@ -1,7 +1,7 @@
-package entities;
+package model.entities;
 
-import exceptions.LimitCaractersException;
-import exceptions.NegatiuException;
+import model.exceptions.LimitCaractersException;
+import model.exceptions.NegatiuException;
 
 import java.util.Comparator;
 
@@ -12,7 +12,7 @@ public class Textil extends Producte {
     private String composicioTextil;
 
     // Constructor
-    public Textil(int preu, String nom, String codi, String composicioTextil) throws NegatiuException, LimitCaractersException {
+    public Textil(double preu, String nom, String codi, String composicioTextil) throws NegatiuException, LimitCaractersException {
         super(preu, nom, codi);
         this.composicioTextil = composicioTextil;
     }

@@ -1,18 +1,18 @@
-package entities;
+package model.entities;
 
-import exceptions.DataCaducitatException;
-import exceptions.LimitCaractersException;
-import exceptions.NegatiuException;
+import model.exceptions.DataCaducitatException;
+import model.exceptions.LimitCaractersException;
+import model.exceptions.NegatiuException;
 
 public abstract class Producte implements Comparable<Producte> {
 
     // Atributs
-    private int preu;
+    private double preu;
     private String nom;
     private String codi;
 
     // Constructor
-    public Producte(int preu, String nom, String codi) throws NegatiuException, LimitCaractersException {
+    public Producte(double preu, String nom, String codi) throws NegatiuException, LimitCaractersException {
         if (preu < 0) {
             throw new NegatiuException("El preu no pot ser negatiu");
         }
@@ -25,11 +25,11 @@ public abstract class Producte implements Comparable<Producte> {
     }
 
     // Getters & Setters
-    public int getPreu() {
+    public double getPreu() {
         return preu;
     }
 
-    public void setPreu(int preu) throws NegatiuException {
+    public void setPreu(double preu) throws NegatiuException {
         if (preu < 0) {
             throw new NegatiuException("El preu no pot ser negatiu");
         }
@@ -64,11 +64,13 @@ public abstract class Producte implements Comparable<Producte> {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         Producte producte = (Producte) obj;
+        // Verifiquem que el codi de barres sigui únic
         return codi.equals(producte.codi);
     }
 
     @Override
     public int hashCode() {
+        // Utilitzem el codi de barres per calcular el hashcode
         return codi.hashCode();
     }
 }

@@ -1,8 +1,8 @@
-package entities;
+package model.entities;
 
-import exceptions.DataCaducitatException;
-import exceptions.LimitCaractersException;
-import exceptions.NegatiuException;
+import model.exceptions.DataCaducitatException;
+import model.exceptions.LimitCaractersException;
+import model.exceptions.NegatiuException;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -18,7 +18,7 @@ public class Alimentacio extends Producte {
     private Temporal dataCaducitat;
 
     // Constructor
-    public Alimentacio(int preu, String nom, String codi, Temporal dataCaducitat) throws NegatiuException, LimitCaractersException, DataCaducitatException {
+    public Alimentacio(double preu, String nom, String codi, Temporal dataCaducitat) throws NegatiuException, LimitCaractersException, DataCaducitatException {
         super(preu, nom, codi);
         if (dataCaducitat == null) {
             throw new DataCaducitatException("La data de caducitat no pot ser null"); // DataCaducitatException o NullPointerException?

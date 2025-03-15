@@ -1,7 +1,7 @@
-package entities;
+package model.entities;
 
-import exceptions.LimitCaractersException;
-import exceptions.NegatiuException;
+import model.exceptions.LimitCaractersException;
+import model.exceptions.NegatiuException;
 
 public class Electronica extends Producte {
             /* Electrònica: dies de garantia (numèric)
@@ -12,7 +12,7 @@ public class Electronica extends Producte {
     private int diesGarantia;
 
     // Constructor
-    public Electronica(int preu, String nom, String codi, int diesGarantia) throws NegatiuException, LimitCaractersException {
+    public Electronica(double preu, String nom, String codi, int diesGarantia) throws NegatiuException, LimitCaractersException {
         super(preu, nom, codi);
         if (diesGarantia < 0) {
             throw new NegatiuException("El nombre de dies de garantia no pot ser negatiu");
