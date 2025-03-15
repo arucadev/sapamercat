@@ -1,0 +1,16 @@
+----------Tiquet de compra-----------
+-------------------------------------
+Data de la compra: 2025-03-15
+-------------SAPAMERCAT--------------
+Producte: ...... Poma
+Preu: .......... 1.5€
+Quantitat: ..... 1 unitats
+Producte: ...... Plàtan
+Preu: .......... 2.5€
+Quantitat: ..... 1 unitats
+
+Preu total: .... 4.0€
+
+Gràcies per la seva compra!
+-------------------------------------
+

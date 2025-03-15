@@ -347,13 +347,18 @@ public class Model {
     /**
      * Obté una llista de productes d'alimentació ordenats
      */
-    public List<Producte> getProductesAlimentacioOrdenats() {
+    public List<Alimentacio> getProductesAlimentacioOrdenats() {
+        PriorityQueue<Alimentacio> alimentacioQueue = new PriorityQueue<>(Comparator.comparing(Alimentacio::getDataCaducitat));
         for (Producte producte : productes) {
             if (producte instanceof Alimentacio) {
-                productesCarroPrioritat.add(producte);
+                alimentacioQueue.add((Alimentacio) producte);
             }
         }
-        return new ArrayList<>(productesCarroPrioritat);
+        List<Alimentacio> llistaOrdenada = new ArrayList<>();
+        while (!alimentacioQueue.isEmpty()) {
+            llistaOrdenada.add(alimentacioQueue.poll());
+        }
+        return llistaOrdenada;
     }
 
     /**

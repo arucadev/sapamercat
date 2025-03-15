@@ -33,7 +33,7 @@ public class Textil extends Producte implements Comparable<Producte>{
     }
 
     @Override
-    protected LocalDate getDataCaducitat() {
+    public LocalDate getDataCaducitat() {
         // Retornem una data llunyana per donar prioritat als aliments
         return LocalDate.ofEpochDay(9999-12-31);
     }

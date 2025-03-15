@@ -21,15 +21,19 @@ public class Main {
 
         // Afegim alguns Productes al sistema per defecte
         try {
-            carro.afegirProducteSistema(new Alimentacio(1.5, "Poma", "111", LocalDate.parse("2022-12-31")));
-            carro.afegirProducteSistema(new Alimentacio(2.5, "Plàtan", "112", LocalDate.parse("2022-12-31")));
-            carro.afegirProducteSistema(new Alimentacio(3.5, "Taronges", "113", LocalDate.parse("2022-12-31")));
+            carro.afegirProducteSistema(new Alimentacio(1.5, "Poma", "111", LocalDate.parse("2025-12-31")));
+            carro.afegirProducteSistema(new Alimentacio(2.5, "Plàtan", "112", LocalDate.parse("2045-12-31")));
+            carro.afegirProducteSistema(new Alimentacio(3.5, "Taronges", "113", LocalDate.parse("2030-12-31")));
+            carro.afegirProducteSistema(new Alimentacio(10.0, "Formatge", "122", LocalDate.parse("2022-12-31")));
             carro.afegirProducteSistema(new Textil(10.0, "Camisa", "114", ComposicioTextil.COTÓ));
             carro.afegirProducteSistema(new Textil(15.0, "Pantalons", "115", ComposicioTextil.POLIESTER));
             carro.afegirProducteSistema(new Textil(20.0, "Sabates", "116", ComposicioTextil.SEDA));
-            carro.afegirProducteSistema(new Electronica(100.0, "Mòbil", "117", 2));
-            carro.afegirProducteSistema(new Electronica(200.0, "Portàtil", "118", 3));
-            carro.afegirProducteSistema(new Electronica(300.0, "Tablet", "119", 1));
+            carro.afegirProducteSistema(new Textil(2.0, "Gorra", "120", ComposicioTextil.COTÓ));
+            carro.afegirProducteSistema(new Textil(20.0, "Bufanda", "121", ComposicioTextil.LLANA));
+            carro.afegirProducteSistema(new Electronica(100.0, "Mòbil", "117", 20));
+            carro.afegirProducteSistema(new Electronica(200.0, "Portàtil", "118", 30));
+            carro.afegirProducteSistema(new Electronica(300.0, "Tablet", "119", 100));
+            carro.afegirProducteSistema(new Electronica(1000.0, "Iphone", "123", 20));
         } catch (NegatiuException | LimitCaractersException | DataCaducitatException e) {
             throw new RuntimeException(e);
         }
@@ -100,11 +104,17 @@ public class Main {
                     break;
                 case 4:
                     System.out.println();
-                    carro.getProductesAlimentacioOrdenats();
+                    List<Alimentacio> aliments = carro.getProductesAlimentacioOrdenats();
+                    for (Producte aliment : aliments) {
+                        System.out.println(aliment.getNom() + " --> " + aliment.getDataCaducitat());
+                    }
                     break;
                 case 5:
                     System.out.println();
-                    carro.getProductesTextilsOrdenats();
+                    List<Textil> textils = carro.getProductesTextilsOrdenats();
+                    for (Textil textil : textils) {
+                        System.out.println(textil.getNom() + " --> " + textil.getComposicioTextil());
+                    }
                     break;
                 case 0:
                     tornar = true;
@@ -349,8 +359,16 @@ public class Main {
         Producte producte = carro.buscarPerCodiSistema(codiBarres);
         try {
             carro.afegirProducteCarro(producte);
+            if (producte != null) {
+                System.out.println("Producte afegit al carro correctament");
+            } else {
+                System.out.println("No hi ha productes al sistema amb aquest codi de barres");
+                System.out.println("Pots introduir nous productes al sistema des del menú principal");
+            }
         } catch (LimitProductesException e) {
             System.out.println(e.getMessage());
+        } catch (NullPointerException | InputMismatchException e) {
+            System.out.println("No hi ha cap producte amb aquest codi de barres");
         }
     }
 

@@ -65,7 +65,11 @@ public class Alimentacio extends Producte implements Comparable<Producte> {
      */
     @Override
     public int compareTo(Producte o) {
-        return this.dataCaducitat.compareTo(o.getDataCaducitat());
+        if (o instanceof Alimentacio) {
+            return this.dataCaducitat.compareTo(((Alimentacio) o).getDataCaducitat());
+        }
+        return 0; // Retorna 0 si es compara amb un producte que no és d'Alimentació
+    }
         /*
     this, other = Cronologicament més proper a més llunyà
     other, this = Cronologicament més llunyà a més proper
@@ -75,5 +79,4 @@ public class Alimentacio extends Producte implements Comparable<Producte> {
     t1 = this
     t2 = other
      */
-    }
 }

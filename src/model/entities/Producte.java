@@ -78,5 +78,5 @@ public abstract class Producte {
         return codi.hashCode();
     }
 
-    protected abstract LocalDate getDataCaducitat();
+    public abstract LocalDate getDataCaducitat();
 }
