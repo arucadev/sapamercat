@@ -1,7 +1,7 @@
 package model;
 
-import model.entities.Alimentacio;
-import model.entities.Producte;
+import model.objects.Alimentacio;
+import model.objects.Producte;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import model.entities.Textil;
+import model.objects.Textil;
 import model.exceptions.CarroBuitException;
 import model.exceptions.DataCaducitatException;
 import model.exceptions.LimitProductesException;

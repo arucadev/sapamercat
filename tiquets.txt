@@ -1,6 +1,6 @@
 ----------Tiquet de compra-----------
 -------------------------------------
-Data de la compra: 2025-03-15
+Data de la compra: 2025-03-17
 -------------SAPAMERCAT--------------
 Producte: ...... Poma
 Preu: .......... 1.5€
@@ -9,7 +9,32 @@ Producte: ...... Plàtan
 Preu: .......... 2.5€
 Quantitat: ..... 1 unitats
 
-Preu total: .... 4.0€
+Preu total: .... 4.39€
+
+Gràcies per la seva compra!
+-------------------------------------
+
+----------Tiquet de compra-----------
+-------------------------------------
+Data de la compra: 2025-03-17
+-------------SAPAMERCAT--------------
+Producte: ...... Poma
+Preu: .......... 1.5€
+Quantitat: ..... 1 unitats
+Producte: ...... Iphone
+Preu: .......... 1000.0€
+Quantitat: ..... 1 unitats
+Producte: ...... Plàtan
+Preu: .......... 2.5€
+Quantitat: ..... 1 unitats
+Producte: ...... Camisa
+Preu: .......... 10.0€
+Quantitat: ..... 1 unitats
+Producte: ...... Pantalons
+Preu: .......... 15.0€
+Quantitat: ..... 1 unitats
+
+Preu total: .... 1034.87€
 
 Gràcies per la seva compra!
 -------------------------------------

@@ -1,11 +1,9 @@
-package model.entities;
+package model.objects;
 
 import model.exceptions.LimitCaractersException;
 import model.exceptions.NegatiuException;
 
-import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 
 public class Electronica extends Producte implements Comparable<Producte> {
             /* Electrònica: dies de garantia (numèric)

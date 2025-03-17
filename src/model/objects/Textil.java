@@ -1,4 +1,4 @@
-package model.entities;
+package model.objects;
 
 import model.exceptions.LimitCaractersException;
 import model.exceptions.NegatiuException;

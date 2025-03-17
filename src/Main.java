@@ -1,5 +1,5 @@
 import model.Model;
-import model.entities.*;
+import model.objects.*;
 import model.exceptions.DataCaducitatException;
 import model.exceptions.LimitCaractersException;
 import model.exceptions.LimitProductesException;
